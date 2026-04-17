@@ -5,8 +5,8 @@
    Tutorial 14
    Review Assignment
 
-   Author: 
-   Date:   
+   Author: Lukas Haupt
+   Date:   4/17/26
 
    Filename: ag_cards2.js
 
@@ -41,6 +41,10 @@ var squareGame = {
               new pokerHand(),
               new pokerHand(),
               new pokerHand()],  
+
+   gameTotal: 0,
+
+   winTotal: 0,
   
    calcRowPoints: function(index) {
       return this.cardGrid[index].handPoints();
@@ -52,10 +56,20 @@ var squareGame = {
          columnHand.cards[i] = this.cardGrid[i].cards[index];
       }
       return columnHand.handPoints();
+   },
+
+   gameResult: function() {
+      if (gameTotal >= winTotal) {
+         return "Winner";
+      } else {
+         return "No Winner";
+      }
    }
 };
 
-
+function insertCard(card, index) {
+   this.cards[index]=card;
+}
 
 
 
@@ -64,8 +78,6 @@ var squareGame = {
 
 
 /* ------- Poker Style Custom Objects ---------- */
-
-
 
 
 /* Constructor function for poker cards */
@@ -78,7 +90,7 @@ function pokerCard(cardSuit, cardRank) {
 /* Method to reference the image source file for a card */
 pokerCard.prototype.cardImage = function() {
   var suitAbbr = this.suit.substring(0, 1).toLowerCase();
-  return suitAbbr + this.rankValue + ".png";
+  return "./img/" + suitAbbr + this.rankValue + ".png";
 };
 
 /* Method to replace a card with a one from the deck */
