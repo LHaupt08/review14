@@ -34,7 +34,7 @@
 	
 */
 
-/*    The squareGame Object  */
+// !* The squareGame object
 var squareGame = {
    cardGrid: [new pokerHand(),
               new pokerHand(),
@@ -44,7 +44,7 @@ var squareGame = {
 
    gameTotal: 0,
 
-   winTotal: 0,
+   winTotal: 50,
   
    calcRowPoints: function(index) {
       return this.cardGrid[index].handPoints();
@@ -59,7 +59,7 @@ var squareGame = {
    },
 
    gameResult: function() {
-      if (gameTotal >= winTotal) {
+      if (this.gameTotal >= this.winTotal) {
          return "Winner";
       } else {
          return "No Winner";
@@ -67,7 +67,8 @@ var squareGame = {
    }
 };
 
-function insertCard(card, index) {
+// Inserts card's value onto grid
+pokerHand.prototype.insertCard = function(card, index) {
    this.cards[index]=card;
 }
 
